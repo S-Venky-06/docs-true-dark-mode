@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <img src="images/icon.png" alt="Icon">
+    <h2>Docs Dark Mode</h2>
+  </div>
+  
+  <div class="toggle-container">
+    <span>Enable Theme</span>
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-header">
+      <span>Paper Brightness</span>
+      <span id="brightnessValue">110%</span>
+    </div>
+    <input type="range" id="brightnessSlider" min="50" max="150" value="110">
+  </div>
+
+  <div class="footer">
+    Shortcut: Alt+D to toggle
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* --- Google Docs Material 3 Dark Theme Variables --- */
+html.gdocs-dark-mode body,
+html.gdocs-dark-mode .docs-gm {
+  --gm3-sys-color-surface: #202124 !important;
+  --gm3-sys-color-on-surface: #e8eaed !important;
+  --gm3-sys-color-surface-container: #28292c !important;
+  --gm3-sys-color-surface-container-high: #3c4043 !important;
+  --gm3-sys-color-surface-container-low: #202124 !important;
+  --gm3-sys-color-surface-container-lowest: #171717 !important;
+  --gm3-sys-color-on-surface-variant: #e8eaed !important;
+  --gm3-sys-color-outline: #5f6368 !important;
+  --gm3-sys-color-primary: #8ab4f8 !important;
+  --gm3-sys-color-on-primary: #202124 !important;
+  --gm3-sys-color-primary-container: #8ab4f8 !important;
+  --gm3-sys-color-on-primary-container: #202124 !important;
+  --gm3-sys-color-inverse-surface: #e8eaed !important;
+  --gm3-sys-color-inverse-on-surface: #202124 !important;
+}
+
+/* Fallback text colors (exclude share iframe so it uses its native GM3 styling) */
+html.gdocs-dark-mode:not(.gdocs-share-iframe) body {
+  color: #e8eaed !important;
+  background-color: #202124 !important;
+}
+
+/* --- Document Canvas Inversion --- */
+/* Target the canvas element directly. */
+html.gdocs-dark-mode .kix-canvas-tile-content,
+html.gdocs-dark-mode .kix-cursor-caret {
+  filter: invert(100%) hue-rotate(180deg) brightness(var(--gdocs-paper-brightness, 1.1)) !important;
+}
+
+/* Fix images getting inverted by the canvas filter by re-inverting them */
+html.gdocs-dark-mode .kix-embeddedobject-image {
+  filter: invert(100%) hue-rotate(180deg) !important;
+}
+
+/* Background around the document (the grey area outside the paper) */
+html.gdocs-dark-mode #docs-editor,
+html.gdocs-dark-mode #docs-editor-container,
+html.gdocs-dark-mode .kix-appview-editor,
+html.gdocs-dark-mode .kix-appview-editor-background {
+  background-color: #111111 !important;
+}
+
+/* Menus and Dropdowns */
+html.gdocs-dark-mode .goog-menu,
+html.gdocs-dark-mode .goog-menuitem,
+html.gdocs-dark-mode .menu-button {
+  background-color: #28292c !important;
+  color: #e8eaed !important;
+  border-color: transparent !important; /* Fix visible borders on menu buttons */
+}
+
+html.gdocs-dark-mode .goog-menuitem:hover,
+html.gdocs-dark-mode .goog-menuitem.goog-menuitem-highlight {
+  background-color: #3c4043 !important;
+}
+
+/* Aggressively strip text-shadow and outlines from menus to fix jagged text */
+html.gdocs-dark-mode .docs-gm .docs-menubar *,
+html.gdocs-dark-mode .docs-gm .docs-menubar .goog-control * {
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  border-color: transparent !important;
+}
+
+/* --- Toolbars and Headers --- */
+html.gdocs-dark-mode #docs-chrome,
+html.gdocs-dark-mode #docs-header,
+html.gdocs-dark-mode #docs-toolbar-wrapper,
+html.gdocs-dark-mode .goog-toolbar,
+html.gdocs-dark-mode .docs-gm .goog-toolbar,
+html.gdocs-dark-mode .docs-title-widget {
+  background-color: #202124 !important;
+  color: #e8eaed !important;
+  border-color: #3c4043 !important;
+}
+
+/* Document Title Input specifically */
+/* Use wildcard to target internal spans and inputs that Google Docs uses */
+html.gdocs-dark-mode .docs-title-widget * {
+  color: #e8eaed !important;
+  background-color: transparent !important;
+  border: none !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  box-shadow: none !important;
+}
+html.gdocs-dark-mode .docs-title-input:focus {
+  background-color: #3c4043 !important;
+}
+
+/* --- Buttons and Icons --- */
+html.gdocs-dark-mode .goog-toolbar-button,
+html.gdocs-dark-mode .goog-toolbar-combo-button,
+html.gdocs-dark-mode .goog-toolbar-menu-button {
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .goog-toolbar-button-hover,
+html.gdocs-dark-mode .goog-toolbar-combo-button-hover,
+html.gdocs-dark-mode .goog-toolbar-menu-button-hover,
+html.gdocs-dark-mode .goog-toolbar-button-active {
+  background-color: #3c4043 !important;
+}
+
+/* Active/Checked Toolbar Buttons (e.g. Bold is ON) */
+html.gdocs-dark-mode .goog-toolbar-button-checked,
+html.gdocs-dark-mode .goog-toolbar-combo-button-open {
+  background-color: #8ab4f8 !important;
+  color: #202124 !important;
+  border-radius: 4px !important;
+}
+
+/* Ensure modern icons inherit the white text color correctly */
+html.gdocs-dark-mode .goog-toolbar-button-inner-box div,
+html.gdocs-dark-mode .goog-toolbar-menu-button-caption div,
+html.gdocs-dark-mode .goog-toolbar-combo-button-caption div,
+html.gdocs-dark-mode .docs-icon {
+  color: inherit !important;
+}
+
+/* For older image-based icon sprites, force them to invert to white */
+html.gdocs-dark-mode .docs-icon-img,
+html.gdocs-dark-mode .goog-toolbar-button-inner-box img {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* Fix for older image sprites inside an ACTIVE button (they need to be dark, not white) */
+html.gdocs-dark-mode .goog-toolbar-button-checked .docs-icon-img,
+html.gdocs-dark-mode .goog-toolbar-button-checked .goog-toolbar-button-inner-box img {
+  filter: none !important; /* Keep them dark */
+}
+
+/* Ruler */
+html.gdocs-dark-mode .kix-ruler {
+  background-color: #202124 !important;
+  border-color: #3c4043 !important;
+}
+html.gdocs-dark-mode .kix-ruler-face {
+  background-color: #202124 !important;
+}
+
+/* --- Side Navigation (Outline) --- */
+html.gdocs-dark-mode .navigation-widget,
+html.gdocs-dark-mode .navigation-widget-content {
+  background-color: #202124 !important;
+  color: #e8eaed !important;
+  border-right: 1px solid #3c4043 !important;
+}
+
+/* Selected item in sidebar */
+html.gdocs-dark-mode .location-indicator-highlight,
+html.gdocs-dark-mode .navigation-item-selected {
+  background-color: #8ab4f8 !important;
+  color: #202124 !important;
+}
+html.gdocs-dark-mode .location-indicator-highlight .docs-icon,
+html.gdocs-dark-mode .navigation-item-selected .docs-icon {
+  color: #202124 !important;
+}
+
+/* --- Scrollbar Theming --- */
+html.gdocs-dark-mode ::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+  background-color: #171717 !important;
+}
+html.gdocs-dark-mode ::-webkit-scrollbar-track {
+  background-color: #171717 !important;
+}
+html.gdocs-dark-mode ::-webkit-scrollbar-thumb {
+  background-color: #444 !important;
+  border: 3px solid #171717 !important;
+  border-radius: 8px !important;
+}
+html.gdocs-dark-mode ::-webkit-scrollbar-thumb:hover {
+  background-color: #555 !important;
+}
+
+/* --- Document Paper Border --- */
+/* Add a subtle outline to the paper so it stands out from the dark background */
+html.gdocs-dark-mode .kix-page {
+  box-shadow: 0 0 4px 1px rgba(0,0,0,0.5) !important;
+  border: 1px solid #333 !important;
+}
+
+/* --- 1. Dropdown Menus Polishing --- */
+html.gdocs-dark-mode .goog-menuseparator {
+  border-top: 1px solid #3c4043 !important;
+}
+html.gdocs-dark-mode .goog-menuitem .goog-menuitem-content,
+html.gdocs-dark-mode .goog-menuitem * {
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .goog-menuitem-disabled .goog-menuitem-content,
+html.gdocs-dark-mode .goog-menuitem-disabled * {
+  color: #5f6368 !important;
+}
+/* Force promo boxes inside menus to be transparent/dark without breaking swatches */
+html.gdocs-dark-mode .goog-menu > .goog-menuheader {
+  background-color: transparent !important;
+}
+
+/* --- 2. Comments & Suggestions --- */
+html.gdocs-dark-mode .docos-anchoreddocoview,
+html.gdocs-dark-mode .docos-replyview,
+html.gdocs-dark-mode .docs-docos-activity-sidebar {
+  background-color: #28292c !important;
+  border-color: #3c4043 !important;
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .docos-author,
+html.gdocs-dark-mode .docos-replyview-body {
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .docos-replyview-timestamp,
+html.gdocs-dark-mode .docos-action-text {
+  color: #9aa0a6 !important;
+}
+html.gdocs-dark-mode .docos-input-textarea {
+  background-color: #202124 !important;
+  color: #e8eaed !important;
+  border: 1px solid #3c4043 !important;
+}
+
+/* --- 3. Tooltips & Bubbles --- */
+html.gdocs-dark-mode .jfk-tooltip,
+html.gdocs-dark-mode .docs-bubble-material,
+html.gdocs-dark-mode .docs-bubble {
+  background-color: #28292c !important;
+  color: #e8eaed !important;
+  border: 1px solid #3c4043 !important;
+}
+html.gdocs-dark-mode .jfk-tooltip-contentId * {
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .jfk-bubble-arrowup .jfk-bubble-arrowimplbefore {
+  border-bottom-color: #3c4043 !important;
+}
+html.gdocs-dark-mode .jfk-bubble-arrowup .jfk-bubble-arrowimplafter {
+  border-bottom-color: #28292c !important;
+}
+
+/* --- 4. Dialogs (Find & Replace, etc.) --- */
+html.gdocs-dark-mode .modal-dialog,
+html.gdocs-dark-mode .docs-findandreplacedialog,
+html.gdocs-dark-mode .docs-explore-widget {
+  background-color: #28292c !important;
+  color: #e8eaed !important;
+  border: 1px solid #3c4043 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5) !important;
+}
+html.gdocs-dark-mode .modal-dialog-title,
+html.gdocs-dark-mode .docs-findandreplacedialog .modal-dialog-title-text {
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .jfk-textinput {
+  background-color: #202124 !important;
+  color: #e8eaed !important;
+  border: 1px solid #5f6368 !important;
+}
+html.gdocs-dark-mode .jfk-button-standard {
+  background-color: #202124 !important;
+  color: #e8eaed !important;
+  border: 1px solid #5f6368 !important;
+}
+/* Removed .jfk-button-action override because it causes the Share button to split. 
+   Google Docs GM3 naturally themes this button. */
+
+/* --- 5. Color Picker --- */
+html.gdocs-dark-mode .appsElementsColorPicker-color-picker__dropdown-menu,
+html.gdocs-dark-mode .goog-palette {
+  background-color: #28292c !important;
+  border-color: #3c4043 !important;
+}
+html.gdocs-dark-mode .goog-palette-cell {
+  border-color: #3c4043 !important;
+}
+
+/* --- 6. Share Dialog overlay --- */
+html.gdocs-dark-mode .modal-dialog-bg {
+  background-color: rgba(0,0,0,0.8) !important;
+}
+
+/* --- 7. Toolbar Search (Omnibox) --- */
+html.gdocs-dark-mode .docs-omnibox-autocomplete {
+  background-color: #202124 !important;
+  border-radius: 20px;
+}
+html.gdocs-dark-mode .docs-omnibox-input {
+  background-color: transparent !important;
+  color: #e8eaed !important;
+}
+html.gdocs-dark-mode .docs-omnibox-input::placeholder {
+  color: #9aa0a6 !important;
+}
+/* Ensure the search icon is visible */
+html.gdocs-dark-mode .docs-icon-search-20,
+html.gdocs-dark-mode .docs-omnibox-search-icon,
+html.gdocs-dark-mode .docs-icon-search {
+  filter: brightness(0) invert(1) !important;
+}

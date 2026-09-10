@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Google Docs Dark Mode",
+  "version": "1.0",
+  "description": "A customizable and perfect dark mode for Google Docs.",
+  "short_name": "Docs Dark",
+  "homepage_url": "https://chrome.google.com/webstore",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Toggle Dark Mode",
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/document/*",
+        "https://docs.google.com/sharing/*",
+        "https://drive.google.com/sharing/*"
+      ],
+      "css": ["dark-theme.css"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
