@@ -18,10 +18,12 @@ Not anymore.
 It doesn't just invert colors lazily—it carefully targets menus, sidebars, tooltips, dialogs, and the canvas itself to ensure everything is perfectly legible and beautiful.
 
 ## ✨ Features
-* **Deep UI Theming:** Custom dark mode CSS that targets hidden UI layers (Dropdown menus, Find & Replace dialogs, Color Pickers, Comment sidebars).
-* **Adjustable Paper Brightness:** A sleek popup UI with a custom slider. Fine-tune the exact brightness/darkness of your document canvas from 50% (pitch black) to 150% (light grey).
-* **Instant Keyboard Shortcut:** Press `Alt + D` anytime inside Google Docs to instantly toggle the theme on or off without reaching for your mouse.
-* **No Inverted Images:** Smart CSS filters ensure your embedded images and graphics stay true to their original colors while the paper turns dark.
+* **Premium UI Redesign:** A sleek, glassmorphism popup with custom fonts, micro-animations, and a dynamic slider.
+* **Deep UI Theming:** Custom dark mode CSS that carefully targets hidden UI layers, Document Tabs, outline sidebars, and dialogs.
+* **Adjustable Paper Brightness:** Fine-tune the exact brightness of your document canvas from 50% (pitch black) to 150% (light grey).
+* **Cross-Tab Sync:** Changes made in the popup instantly broadcast to all open Google Docs and Drive tabs.
+* **Instant Native Shortcut:** Press `Alt + D` (customizable in Chrome settings) anytime to instantly toggle the theme.
+* **Zero FOUC:** Specialized code prevents the blinding "flash of white" before the document fully loads.
 
 ## 🚀 Why isn't this on the Chrome Web Store?
 

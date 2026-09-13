@@ -1,3 +1,10 @@
+// FOUC Mitigation: Instantly apply a dark background to html before storage resolves
+const initStyle = document.createElement('style');
+initStyle.textContent = 'html { background-color: #202124 !important; transition: none !important; }';
+if (window === window.top && document.documentElement) {
+  document.documentElement.appendChild(initStyle);
+}
+
 // Initialize state
 function initDarkMode() {
   chrome.storage.local.get(['darkModeEnabled', 'paperBrightness'], function(result) {
@@ -6,6 +13,26 @@ function initDarkMode() {
     
     const brightness = result.paperBrightness || "110";
     setBrightness(brightness);
+
+    const enableTransitions = () => {
+      document.documentElement.classList.add('gdocs-transitions-ready');
+    };
+
+    // Remove the FOUC mitigation style once state is loaded
+    if (initStyle.isConnected) {
+      if (isEnabled) {
+        // Small timeout ensures the transition starts correctly after the class is applied
+        setTimeout(() => {
+          if (initStyle.isConnected) initStyle.remove();
+          enableTransitions();
+        }, 10);
+      } else {
+        initStyle.remove();
+        enableTransitions();
+      }
+    } else {
+      enableTransitions();
+    }
   });
 }
 
@@ -54,18 +81,3 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   return true; // Keep message channel open
 });
 
-// Keyboard shortcut (Alt+D)
-document.addEventListener('keydown', function(e) {
-  // Only trigger shortcut in the top-level window, not inside iframes
-  if (window !== window.top) return;
-  
-  if (e.altKey && e.key.toLowerCase() === 'd') {
-    chrome.storage.local.get(['darkModeEnabled'], function(result) {
-      const isEnabled = result.darkModeEnabled !== false;
-      const newState = !isEnabled;
-      
-      chrome.storage.local.set({darkModeEnabled: newState});
-      toggleDarkMode(newState);
-    });
-  }
-});

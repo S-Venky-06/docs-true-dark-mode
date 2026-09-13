@@ -2,32 +2,54 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="header">
-    <img src="images/icon.png" alt="Icon">
-    <h2>Docs Dark Mode</h2>
+    <div class="logo-glow"></div>
+    <img src="images/icon-48.png" alt="Icon" class="logo">
+    <div class="title-container">
+      <h2>Docs Dark Mode</h2>
+      <span class="badge">Premium</span>
+    </div>
   </div>
   
-  <div class="toggle-container">
-    <span>Enable Theme</span>
+  <div class="card toggle-card">
+    <div class="toggle-info">
+      <div class="label-group">
+        <span class="label">Enable Theme</span>
+        <span class="status-dot" id="statusDot"></span>
+      </div>
+      <span class="sub-label" id="themeStatus">Active across open documents</span>
+    </div>
     <label class="switch">
-      <input type="checkbox" id="darkModeToggle">
+      <input type="checkbox" id="darkModeToggle" aria-label="Toggle Dark Mode">
       <span class="slider"></span>
     </label>
   </div>
 
-  <div class="slider-container">
+  <div class="card slider-card">
     <div class="slider-header">
-      <span>Paper Brightness</span>
-      <span id="brightnessValue">110%</span>
+      <span class="label">Paper Brightness</span>
+      <span id="brightnessValue" class="value-badge">110%</span>
     </div>
-    <input type="range" id="brightnessSlider" min="50" max="150" value="110">
+    <div class="range-wrapper">
+      <input type="range" id="brightnessSlider" min="50" max="150" value="110" aria-label="Adjust Paper Brightness">
+    </div>
+    <div class="slider-labels">
+      <span>Dark</span>
+      <span>Light</span>
+    </div>
   </div>
 
   <div class="footer">
-    Shortcut: Alt+D to toggle
+    <div class="shortcut-pill">
+      <kbd>Alt</kbd> + <kbd>D</kbd> to toggle
+    </div>
+    <span class="version-badge">v2.1</span>
   </div>
 
   <script src="popup.js"></script>

@@ -7,8 +7,12 @@
   "homepage_url": "https://chrome.google.com/webstore",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "tabs"
   ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+  },
   "action": {
     "default_popup": "popup.html",
     "default_title": "Toggle Dark Mode",
@@ -22,6 +26,18 @@
     "16": "images/icon-16.png",
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-dark-mode": {
+      "suggested_key": {
+        "default": "Alt+D",
+        "mac": "Alt+D"
+      },
+      "description": "Toggle Dark Mode"
+    }
   },
   "content_scripts": [
     {

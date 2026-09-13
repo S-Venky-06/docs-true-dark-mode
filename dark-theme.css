@@ -1,3 +1,19 @@
+/* --- Smooth Transitions --- */
+html.gdocs-transitions-ready body,
+html.gdocs-transitions-ready .docs-gm,
+html.gdocs-transitions-ready #docs-editor,
+html.gdocs-transitions-ready #docs-editor-container,
+html.gdocs-transitions-ready .kix-appview-editor,
+html.gdocs-transitions-ready .kix-appview-editor-background,
+html.gdocs-transitions-ready #docs-chrome,
+html.gdocs-transitions-ready #docs-header,
+html.gdocs-transitions-ready #docs-toolbar-wrapper,
+html.gdocs-transitions-ready .goog-toolbar,
+html.gdocs-transitions-ready .navigation-widget,
+html.gdocs-transitions-ready .navigation-widget-content {
+  transition: background-color 0.22s ease, color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
 /* --- Google Docs Material 3 Dark Theme Variables --- */
 html.gdocs-dark-mode body,
 html.gdocs-dark-mode .docs-gm {
@@ -11,8 +27,10 @@ html.gdocs-dark-mode .docs-gm {
   --gm3-sys-color-outline: #5f6368 !important;
   --gm3-sys-color-primary: #8ab4f8 !important;
   --gm3-sys-color-on-primary: #202124 !important;
-  --gm3-sys-color-primary-container: #8ab4f8 !important;
-  --gm3-sys-color-on-primary-container: #202124 !important;
+  --gm3-sys-color-primary-container: #394457 !important;
+  --gm3-sys-color-on-primary-container: #e8eaed !important;
+  --gm3-sys-color-secondary-container: #394457 !important;
+  --gm3-sys-color-on-secondary-container: #e8eaed !important;
   --gm3-sys-color-inverse-surface: #e8eaed !important;
   --gm3-sys-color-inverse-on-surface: #202124 !important;
 }
@@ -40,11 +58,19 @@ html.gdocs-dark-mode #docs-editor,
 html.gdocs-dark-mode #docs-editor-container,
 html.gdocs-dark-mode .kix-appview-editor,
 html.gdocs-dark-mode .kix-appview-editor-background {
-  background-color: #111111 !important;
+  background-color: #0e0e0e !important;
+  background-image: radial-gradient(ellipse at 50% 30%, #151517 0%, #0a0a0a 100%) !important;
 }
 
 /* Menus and Dropdowns */
-html.gdocs-dark-mode .goog-menu,
+html.gdocs-dark-mode .goog-menu {
+  background-color: #28292c !important;
+  color: #e8eaed !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 8px !important;
+}
+
 html.gdocs-dark-mode .goog-menuitem,
 html.gdocs-dark-mode .menu-button {
   background-color: #28292c !important;
@@ -67,7 +93,12 @@ html.gdocs-dark-mode .docs-gm .docs-menubar .goog-control * {
 
 /* --- Toolbars and Headers --- */
 html.gdocs-dark-mode #docs-chrome,
-html.gdocs-dark-mode #docs-header,
+html.gdocs-dark-mode #docs-header {
+  background-color: #1a1b1e !important;
+  color: #e8eaed !important;
+  border-color: #3c4043 !important;
+}
+
 html.gdocs-dark-mode #docs-toolbar-wrapper,
 html.gdocs-dark-mode .goog-toolbar,
 html.gdocs-dark-mode .docs-gm .goog-toolbar,
@@ -77,15 +108,16 @@ html.gdocs-dark-mode .docs-title-widget {
   border-color: #3c4043 !important;
 }
 
+html.gdocs-dark-mode #docs-toolbar-wrapper {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.04), 0 2px 8px rgba(0,0,0,0.3) !important;
+  position: relative;
+  z-index: 10;
+}
+
 /* Document Title Input specifically */
-/* Use wildcard to target internal spans and inputs that Google Docs uses */
-html.gdocs-dark-mode .docs-title-widget * {
+html.gdocs-dark-mode .docs-title-input {
   color: #e8eaed !important;
-  background-color: transparent !important;
-  border: none !important;
   text-shadow: none !important;
-  -webkit-text-stroke: 0 !important;
-  box-shadow: none !important;
 }
 html.gdocs-dark-mode .docs-title-input:focus {
   background-color: #3c4043 !important;
@@ -102,14 +134,15 @@ html.gdocs-dark-mode .goog-toolbar-combo-button-hover,
 html.gdocs-dark-mode .goog-toolbar-menu-button-hover,
 html.gdocs-dark-mode .goog-toolbar-button-active {
   background-color: #3c4043 !important;
+  border-radius: 6px !important;
 }
 
 /* Active/Checked Toolbar Buttons (e.g. Bold is ON) */
 html.gdocs-dark-mode .goog-toolbar-button-checked,
 html.gdocs-dark-mode .goog-toolbar-combo-button-open {
-  background-color: #8ab4f8 !important;
-  color: #202124 !important;
-  border-radius: 4px !important;
+  background-color: rgba(138, 180, 248, 0.25) !important;
+  color: #8ab4f8 !important;
+  border-radius: 6px !important;
 }
 
 /* Ensure modern icons inherit the white text color correctly */
@@ -134,36 +167,57 @@ html.gdocs-dark-mode .goog-toolbar-button-checked .goog-toolbar-button-inner-box
 
 /* Ruler */
 html.gdocs-dark-mode .kix-ruler {
-  background-color: #202124 !important;
+  background-color: #1a1b1e !important;
   border-color: #3c4043 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }
 html.gdocs-dark-mode .kix-ruler-face {
-  background-color: #202124 !important;
+  background-color: #1a1b1e !important;
 }
 
-/* --- Side Navigation (Outline) --- */
+/* --- Side Navigation (Outline & Document Tabs) --- */
 html.gdocs-dark-mode .navigation-widget,
-html.gdocs-dark-mode .navigation-widget-content {
+html.gdocs-dark-mode .navigation-widget-content,
+html.gdocs-dark-mode .docs-document-tab-sidebar,
+html.gdocs-dark-mode div[role="tablist"] {
   background-color: #202124 !important;
   color: #e8eaed !important;
   border-right: 1px solid #3c4043 !important;
 }
 
+html.gdocs-dark-mode .docs-document-tabs-back-button,
+html.gdocs-dark-mode .docs-document-tabs-add-button,
+html.gdocs-dark-mode .docs-document-tabs-overflow-button {
+  background-color: transparent !important;
+  color: #e8eaed !important;
+}
+
 /* Selected item in sidebar */
 html.gdocs-dark-mode .location-indicator-highlight,
 html.gdocs-dark-mode .navigation-item-selected {
-  background-color: #8ab4f8 !important;
-  color: #202124 !important;
+  background-color: #394457 !important;
+  color: #e8eaed !important;
+  border-radius: 4px !important;
 }
 html.gdocs-dark-mode .location-indicator-highlight .docs-icon,
 html.gdocs-dark-mode .navigation-item-selected .docs-icon {
-  color: #202124 !important;
+  color: #e8eaed !important;
+}
+
+/* Document Tabs Feature (New Google Docs left-pane tabs) */
+html.gdocs-dark-mode div[role="tab"][aria-selected="true"],
+html.gdocs-dark-mode .docs-document-tabs-tab-active {
+  background-color: #394457 !important;
+}
+html.gdocs-dark-mode div[role="tab"][aria-selected="true"] .docs-document-tabs-tab-title,
+html.gdocs-dark-mode .docs-document-tabs-tab-active .docs-document-tabs-tab-title {
+  color: #e8eaed !important;
 }
 
 /* --- Scrollbar Theming --- */
 html.gdocs-dark-mode ::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   background-color: #171717 !important;
 }
 html.gdocs-dark-mode ::-webkit-scrollbar-track {
@@ -171,8 +225,8 @@ html.gdocs-dark-mode ::-webkit-scrollbar-track {
 }
 html.gdocs-dark-mode ::-webkit-scrollbar-thumb {
   background-color: #444 !important;
-  border: 3px solid #171717 !important;
-  border-radius: 8px !important;
+  border: 2px solid #171717 !important;
+  border-radius: 10px !important;
 }
 html.gdocs-dark-mode ::-webkit-scrollbar-thumb:hover {
   background-color: #555 !important;
@@ -181,20 +235,95 @@ html.gdocs-dark-mode ::-webkit-scrollbar-thumb:hover {
 /* --- Document Paper Border --- */
 /* Add a subtle outline to the paper so it stands out from the dark background */
 html.gdocs-dark-mode .kix-page {
-  box-shadow: 0 0 4px 1px rgba(0,0,0,0.5) !important;
-  border: 1px solid #333 !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.09), 0 2px 6px rgba(0,0,0,0.38), 0 24px 60px rgba(0,0,0,0.34) !important;
+  border: 1px solid rgba(218, 226, 255, 0.1) !important;
+}
+
+/* Material 3 surface hierarchy — a dark workspace with readable, distinct layers. */
+html.gdocs-dark-mode body,
+html.gdocs-dark-mode .docs-gm { background-color: #1b1d22 !important; }
+
+html.gdocs-dark-mode #docs-chrome,
+html.gdocs-dark-mode #docs-header,
+html.gdocs-dark-mode .kix-ruler,
+html.gdocs-dark-mode .kix-ruler-face { background-color: #181a20 !important; border-color: #343944 !important; }
+
+html.gdocs-dark-mode #docs-toolbar-wrapper,
+html.gdocs-dark-mode .goog-toolbar,
+html.gdocs-dark-mode .docs-gm .goog-toolbar,
+html.gdocs-dark-mode .navigation-widget,
+html.gdocs-dark-mode .navigation-widget-content { background-color: #20232a !important; border-color: #343944 !important; }
+
+html.gdocs-dark-mode #docs-toolbar-wrapper {
+  box-shadow: 0 1px 0 rgba(255,255,255,0.055), 0 8px 24px rgba(0,0,0,0.22) !important;
+}
+
+html.gdocs-dark-mode #docs-editor,
+html.gdocs-dark-mode #docs-editor-container,
+html.gdocs-dark-mode .kix-appview-editor,
+html.gdocs-dark-mode .kix-appview-editor-background {
+  background-color: #101217 !important;
+  background-image: radial-gradient(ellipse at 50% 26%, #1c2029 0%, #101217 58%, #0b0d11 100%) !important;
+}
+
+html.gdocs-dark-mode .goog-menu,
+html.gdocs-dark-mode .goog-menuitem,
+html.gdocs-dark-mode .menu-button,
+html.gdocs-dark-mode .modal-dialog,
+html.gdocs-dark-mode .docs-findandreplacedialog,
+html.gdocs-dark-mode .docs-explore-widget { background-color: #282c34 !important; }
+
+html.gdocs-dark-mode .goog-menuitem:hover,
+html.gdocs-dark-mode .goog-menuitem.goog-menuitem-highlight,
+html.gdocs-dark-mode .goog-toolbar-button-hover,
+html.gdocs-dark-mode .goog-toolbar-combo-button-hover,
+html.gdocs-dark-mode .goog-toolbar-menu-button-hover { background-color: #393e48 !important; }
+
+html.gdocs-dark-mode .goog-toolbar-button-checked,
+html.gdocs-dark-mode .goog-toolbar-combo-button-open,
+html.gdocs-dark-mode .location-indicator-highlight,
+html.gdocs-dark-mode .navigation-item-selected,
+html.gdocs-dark-mode div[role="tab"][aria-selected="true"],
+html.gdocs-dark-mode .docs-document-tabs-tab-active { background-color: #334866 !important; }
+
+html.gdocs-dark-mode [role="button"]:focus-visible,
+html.gdocs-dark-mode [role="menuitem"]:focus-visible,
+html.gdocs-dark-mode input:focus-visible,
+html.gdocs-dark-mode textarea:focus-visible {
+  outline: 2px solid #a8c7fa !important;
+  outline-offset: 2px !important;
+}
+
+html.gdocs-dark-mode .docs-material-button,
+html.gdocs-dark-mode .docs-share-button,
+html.gdocs-dark-mode [data-tooltip*="Share"] { border-radius: 10px !important; }
+
+html.gdocs-dark-mode .docs-material-button:hover,
+html.gdocs-dark-mode .goog-toolbar-button-hover { box-shadow: inset 0 0 0 1px rgba(220, 230, 255, 0.08) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.gdocs-transitions-ready body,
+  html.gdocs-transitions-ready .docs-gm,
+  html.gdocs-transitions-ready #docs-editor,
+  html.gdocs-transitions-ready #docs-editor-container,
+  html.gdocs-transitions-ready .kix-appview-editor,
+  html.gdocs-transitions-ready .kix-appview-editor-background,
+  html.gdocs-transitions-ready #docs-chrome,
+  html.gdocs-transitions-ready #docs-header,
+  html.gdocs-transitions-ready #docs-toolbar-wrapper,
+  html.gdocs-transitions-ready .goog-toolbar,
+  html.gdocs-transitions-ready .navigation-widget,
+  html.gdocs-transitions-ready .navigation-widget-content { transition: none !important; }
 }
 
 /* --- 1. Dropdown Menus Polishing --- */
 html.gdocs-dark-mode .goog-menuseparator {
   border-top: 1px solid #3c4043 !important;
 }
-html.gdocs-dark-mode .goog-menuitem .goog-menuitem-content,
-html.gdocs-dark-mode .goog-menuitem * {
+html.gdocs-dark-mode .goog-menuitem .goog-menuitem-content {
   color: #e8eaed !important;
 }
-html.gdocs-dark-mode .goog-menuitem-disabled .goog-menuitem-content,
-html.gdocs-dark-mode .goog-menuitem-disabled * {
+html.gdocs-dark-mode .goog-menuitem-disabled .goog-menuitem-content {
   color: #5f6368 !important;
 }
 /* Force promo boxes inside menus to be transparent/dark without breaking swatches */
@@ -255,10 +384,11 @@ html.gdocs-dark-mode .modal-dialog-title,
 html.gdocs-dark-mode .docs-findandreplacedialog .modal-dialog-title-text {
   color: #e8eaed !important;
 }
+html.gdocs-dark-mode .docs-findandreplacedialog input,
 html.gdocs-dark-mode .jfk-textinput {
-  background-color: #202124 !important;
+  background-color: #101217 !important;
   color: #e8eaed !important;
-  border: 1px solid #5f6368 !important;
+  border: 1px solid #343944 !important;
 }
 html.gdocs-dark-mode .jfk-button-standard {
   background-color: #202124 !important;
@@ -280,7 +410,9 @@ html.gdocs-dark-mode .goog-palette-cell {
 
 /* --- 6. Share Dialog overlay --- */
 html.gdocs-dark-mode .modal-dialog-bg {
-  background-color: rgba(0,0,0,0.8) !important;
+  background-color: rgba(0,0,0,0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
 }
 
 /* --- 7. Toolbar Search (Omnibox) --- */
