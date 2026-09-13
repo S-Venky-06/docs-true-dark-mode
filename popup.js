@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const brightnessValue = document.getElementById('brightnessValue');
   const statusDot = document.getElementById('statusDot');
   const themeStatus = document.getElementById('themeStatus');
+  const previewStrip = document.getElementById('previewStrip');
+  const presetChips = document.querySelectorAll('.preset-chip');
 
   function updateThemeStatus(isEnabled) {
     statusDot.classList.toggle('active', isEnabled);
@@ -18,7 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const max = Number(brightnessSlider.max) || 150;
     const percentage = ((val - min) / (max - min)) * 100;
     brightnessSlider.style.background = `linear-gradient(to right, #8ab4f8 ${percentage}%, #374151 ${percentage}%)`;
+    
+    const brightnessFloat = (parseInt(val) / 100).toFixed(2);
+    previewStrip.style.filter = `invert(100%) hue-rotate(180deg) brightness(${brightnessFloat})`;
   }
+
+  // Handle preset chips
+  presetChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const val = chip.getAttribute('data-value');
+      brightnessSlider.value = val;
+      brightnessSlider.dispatchEvent(new Event('input'));
+    });
+  });
 
   // Load current state
   chrome.storage.local.get(['darkModeEnabled', 'paperBrightness'], function(result) {

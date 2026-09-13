@@ -172,7 +172,7 @@ html.gdocs-dark-mode .kix-ruler {
   box-shadow: 0 1px 3px rgba(0,0,0,0.2) !important;
 }
 html.gdocs-dark-mode .kix-ruler-face {
-  background-color: #1a1b1e !important;
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
 }
 
 /* --- Side Navigation (Outline & Document Tabs) --- */
@@ -245,8 +245,7 @@ html.gdocs-dark-mode .docs-gm { background-color: #1b1d22 !important; }
 
 html.gdocs-dark-mode #docs-chrome,
 html.gdocs-dark-mode #docs-header,
-html.gdocs-dark-mode .kix-ruler,
-html.gdocs-dark-mode .kix-ruler-face { background-color: #181a20 !important; border-color: #343944 !important; }
+html.gdocs-dark-mode .kix-ruler { background-color: #181a20 !important; border-color: #343944 !important; }
 
 html.gdocs-dark-mode #docs-toolbar-wrapper,
 html.gdocs-dark-mode .goog-toolbar,
@@ -432,4 +431,20 @@ html.gdocs-dark-mode .docs-icon-search-20,
 html.gdocs-dark-mode .docs-omnibox-search-icon,
 html.gdocs-dark-mode .docs-icon-search {
   filter: brightness(0) invert(1) !important;
+}
+
+/* --- 8. Document Text Selection --- */
+html.gdocs-dark-mode .kix-selection-overlay {
+  background-color: rgba(138, 180, 248, 0.25) !important;
+  mix-blend-mode: screen !important;
+}
+html.gdocs-dark-mode ::selection {
+  background-color: rgba(138, 180, 248, 0.3) !important;
+}
+
+/* --- 9. Status Bar & Butter Bar --- */
+html.gdocs-dark-mode .docs-butterbar-container,
+html.gdocs-dark-mode .docs-butterbar-wrap {
+  background-color: #202124 !important;
+  color: #e8eaed !important;
 }
